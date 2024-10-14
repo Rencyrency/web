@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMI College</title>
+    <style>
+       
+    </style>
+    <link rel="stylesheet" href="abc.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section">
+        <h1>Welcome to DMI College</h1>
+        <p>Providing quality education for future leaders.</p>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>DMI College is committed to excellence in teaching and research, offering a vibrant and inclusive environment for students.</p>
+    </section>
+
+    <section id="academics" class="section">
+        <h2>Academics</h2>
+        <ul>
+            <li>Engineering Programs</li>
+            <li>Science & Humanities</li>
+            <li>Management Studies</li>
+            <li>Research & Development</li>
+        </ul>
+    </section>
+
+    <section id="admissions" class="section">
+        <h2>Admissions</h2>
+        <p>Join our academic community and start your journey toward success. <a href="#contact">Contact us</a> for more details about the admission process.</p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: admissions@dmi.edu</p>
+        <p>Phone: +1234567890</p>
+        <p>Address: DMI College of Engineering, Chennai</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DMI College. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chat-container">
+        <div class="chat-header">DMI College Chatbot</div>
+        <div class="chat-body" id="chat-body">
+            <div class="message bot-message">
+                Hello! Welcome to DMI College. How can I assist you today?
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBody = document.getElementById('chat-body');
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+
+            if (message !== '') {
+                addUserMessage(message);
+                addBotReply(message);
+                userInput.value = '';
+            }
+        }
+
+        function addUserMessage(message) {
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.textContent = message;
+            chatBody.appendChild(userMessage);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function addBotReply(message) {
+            let reply = '';
+
+            // Predefined responses
+            const responses = {
+                'hello': 'Hi there! How can I help you?',
+                'courses': 'Computer science and Engineering, Artificial Intelligence, Information Technology, Electronics and Communication Engineering, Electrical Engineering.',
+                'contact': 'You can contact the admission office at admissions@dmi.edu.',
+                'location': 'DMI College is located in Aralvaimozhi, Tamil Nadu.',
+                'bye': 'Goodbye! Have a great day!'
+            };
+
+            const lowerCaseMessage = message.toLowerCase();
+            reply = responses[lowerCaseMessage] || "I'm sorry, I don't have the answer to that. Please contact us for more info.";
+
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot-message';
+            botMessage.textContent = reply;
+            chatBody.appendChild(botMessage);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>
